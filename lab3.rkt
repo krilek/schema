@@ -82,3 +82,14 @@
         (else (filter pred (cdr l)))
   )
 )
+
+;;33
+(define (counting-version f)
+  (define counter 0)
+    (define (dispatch m)
+      (cond
+        ((eq? m 'reset) (begin (set! counter 0) counter))
+        ((eq? m 'ile) counter)
+        (else (begin (set! counter (+ 1 counter)) (f m)))))
+    dispatch)
+(define sq (counting-version sqrt))
